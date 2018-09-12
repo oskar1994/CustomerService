@@ -43,13 +43,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CustomerService\CustomerService.csproj">
-      <Project>{89106d71-010e-449e-87e9-da4f31534e8d}</Project>
-      <Name>CustomerService</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DatabaseEngine\DatabaseEngine.csproj">
       <Project>{d9fffb75-a65b-4c65-ba60-ef2b2759c598}</Project>
       <Name>DatabaseEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataTypes\DataTypes.csproj">
+      <Project>{b5953428-ce87-47e4-8bd5-0403d2428689}</Project>
+      <Name>DataTypes</Name>
     </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{d07a1a55-ed09-431e-bd5b-f61e8bbf18af}</Project>
