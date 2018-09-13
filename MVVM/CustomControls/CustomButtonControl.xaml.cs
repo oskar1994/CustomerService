@@ -18,9 +18,9 @@ namespace MVVM.CustomControls
     /// <summary>
     /// Interaction logic for ButtonsControl.xaml
     /// </summary>
-    public partial class CustomButtonsControl : UserControl
+    public partial class CustomButtonControl : UserControl
     {
-        public CustomButtonsControl()
+        public CustomButtonControl()
         {
             InitializeComponent();
         }
