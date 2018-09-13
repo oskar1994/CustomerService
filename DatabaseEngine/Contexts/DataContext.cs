@@ -1,6 +1,9 @@
-﻿using System;
+﻿using DatabaseEngine.Controllers;
+using Domain;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -21,7 +24,17 @@ namespace DatabaseEngine.Contexts
             }.ConnectionString
         } , true)
         {
-
+            CustomerController = new CustomerController(this);
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            base.OnModelCreating(modelBuilder);
+        }
+
+        public DbSet<Customer> Customers { get; set; }
+
+        public CustomerController CustomerController { get; set; }
     }
 }
