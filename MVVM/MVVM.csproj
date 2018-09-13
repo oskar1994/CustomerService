@@ -74,7 +74,9 @@
       <Name>LangDictionary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Styles\" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Views\MainWindowView.xaml">
       <SubType>Designer</SubType>

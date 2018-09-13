@@ -8,7 +8,6 @@ namespace DataTypes.Enums
 {
     public enum Language
     {
-        Custom = ~0,
-        Polish
+        CustomEnglish = ~0,
     }
 }

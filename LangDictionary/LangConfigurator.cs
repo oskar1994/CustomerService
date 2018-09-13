@@ -18,18 +18,14 @@ namespace LangDictionary
         {
             switch (type)
             {
-                case Language.Custom:
+                case Language.CustomEnglish:
                     ConfigureResourcesOnSelectedLang("");
-                    break;
-                case Language.Polish:
-                    ConfigureResourcesOnSelectedLang("pl-PL");
-                    break;             
+                    break;            
             }
         }
 
         private static void ConfigureResourcesOnSelectedLang(string lang)
-        {
-            
+        {           
             Resource.Culture = new System.Globalization.CultureInfo(lang);
         }
         #endregion
