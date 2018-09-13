@@ -16,6 +16,7 @@ namespace DatabaseEngine.Contexts
     /// </summary>
     public class DataContext : DbContext
     {
+        #region Constructor
         public DataContext() : base(new SQLiteConnection()
         {
             ConnectionString = new SQLiteConnectionStringBuilder()
@@ -26,15 +27,20 @@ namespace DatabaseEngine.Contexts
         {
             CustomerController = new CustomerController(this);
         }
+        #endregion
 
+        #region Methods
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             base.OnModelCreating(modelBuilder);
         }
+        #endregion
 
+        #region Properties
         public DbSet<Customer> Customers { get; set; }
+        public CustomerController CustomerController { get; set; }     
+        #endregion
 
-        public CustomerController CustomerController { get; set; }
     }
 }
