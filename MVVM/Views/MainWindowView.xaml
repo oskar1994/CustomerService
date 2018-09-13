@@ -11,6 +11,6 @@
         <ViewModel:MainWindowViewModel/>
     </Window.DataContext>
     <Grid>
-        <Label Content="{Binding Test}"/>
+            
     </Grid>
 </Window>
