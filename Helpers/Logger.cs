@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataTypes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Helpers
         #region Constructor
         static Logger()
         {
-            _logPath = Path.GetTempPath() + "\\CustomerService.log";
+            _logPath = Paths.ToLogger;
             CreateFileIfNotExists(_logPath);
             ClearFileIfItsHuge(_logPath);    
         }     

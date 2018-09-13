@@ -1,4 +1,5 @@
 ﻿using DatabaseEngine.Controllers;
+using DataTypes;
 using Domain;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace DatabaseEngine.Contexts
         {
             ConnectionString = new SQLiteConnectionStringBuilder()
             {
-                DataSource = System.IO.Path.GetTempPath() + @"\\CustomerService.csdb" 
+                DataSource = Paths.ToCustomerServiceDatabase 
             }.ConnectionString
         } , true)
         {
@@ -37,7 +38,7 @@ namespace DatabaseEngine.Contexts
         /// </summary>
         private void CreateTablesIfNotExists()
         {
-            using (var SQLiteConnection = new SQLiteConnection("Data Source=" + System.IO.Path.GetTempPath() + "\\CustomerService.csdb"))
+            using (var SQLiteConnection = new SQLiteConnection("Data Source=" + Paths.ToCustomerServiceDatabase))
             {
                 SQLiteConnection.Open();
                 using (var command = new SQLiteCommand(SQLiteConnection))
