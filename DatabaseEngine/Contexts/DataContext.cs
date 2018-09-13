@@ -14,7 +14,7 @@ namespace DatabaseEngine.Contexts
     /// <summary>
     /// EF DbContext and SQLite
     /// </summary>
-    public class DataContext : DbContext
+    public class DataContext : DbContext, IDisposable
     {
         #region Constructor
         public DataContext() : base(new SQLiteConnection()
@@ -25,11 +25,36 @@ namespace DatabaseEngine.Contexts
             }.ConnectionString
         } , true)
         {
-            CustomerController = new CustomerController(this);
+             Database.CreateIfNotExists();
+             CreateTablesIfNotExists();
+             CustomerController = new CustomerController(this);    
         }
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Creating Tables using SQLiteConnection because it always makes me problems to create it using only EF 
+        /// </summary>
+        private void CreateTablesIfNotExists()
+        {
+            using (var SQLiteConnection = new SQLiteConnection("Data Source=" + System.IO.Path.GetTempPath() + "\\CustomerService.csdb"))
+            {
+                SQLiteConnection.Open();
+                using (var command = new SQLiteCommand(SQLiteConnection))
+                {
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "CREATE TABLE IF NOT EXISTS Customer (" +
+                                       "Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                       "Name TEXT, " +
+                                       "LastName TEXT, " +
+                                       "TelephoneNumber INTEGER, " +
+                                       "Address TEXT)";
+                    command.ExecuteNonQuery();
+                }
+                SQLiteConnection.Close();
+            };
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

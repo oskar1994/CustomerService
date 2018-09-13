@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DatabaseEngine.Contexts;
+using Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,10 @@ namespace MVVM.ViewModels
         public MainWindowViewModel()
         {
             Test = "aaaaaaa";
+            using (DataContext db = new DataContext())
+            {
+                db.CustomerController.AddCustomer(new Customer() { Address = "sad", LastName = "sd", Name = "sdsad", TelephoneNumber = 343434 });
+            }
         }
         #endregion
 
