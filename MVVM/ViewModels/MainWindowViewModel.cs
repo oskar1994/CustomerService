@@ -1,5 +1,6 @@
 ﻿using DatabaseEngine.Contexts;
 using Domain;
+using Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,18 @@ namespace MVVM.ViewModels
         public MainWindowViewModel()
         {
             Test = "aaaaaaa";
-            using (DataContext db = new DataContext())
+            try
             {
-                db.CustomerController.AddCustomer(new Customer() { Address = "sad", LastName = "sd", Name = "sdsad", TelephoneNumber = 343434 });
+                using (DataContext db = new DataContext())
+                {
+                    db.CustomerController.AddCustomer(new Customer() { Address = "sad", LastName = "sd", Name = "sdsad", TelephoneNumber = 222});
+                    Customer a = null;
+                    a.Name = "asd";
+                }
+            }
+            catch(Exception exc)
+            {
+                Logger.LogException(exc);
             }
         }
         #endregion

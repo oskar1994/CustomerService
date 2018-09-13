@@ -21,7 +21,7 @@ namespace DatabaseEngine.Contexts
         {
             ConnectionString = new SQLiteConnectionStringBuilder()
             {
-                DataSource = System.IO.Path.GetTempPath() + "\\CustomerService.csdb" 
+                DataSource = System.IO.Path.GetTempPath() + @"\\CustomerService.csdb" 
             }.ConnectionString
         } , true)
         {
