@@ -114,16 +114,12 @@ namespace MVVM.ViewModels
             {
                 ToolTip = Lang.Ok,
                 Icon = StyleResourceDictionary._styles["Ok"] as System.Windows.Media.Geometry,
-                IsEnabled = true,
-                Opacity = 100,
                 Command = new RelayCommand<object>(x => Ok())
             };
             var editButton = new CustomButton()
             {
                 ToolTip = Lang.Cancel,
                 Icon = StyleResourceDictionary._styles["Cancel"] as System.Windows.Media.Geometry,
-                IsEnabled = true,
-                Opacity = 100,
                 Command = new RelayCommand<object>(x => CancelWindow())
             };
             CustomButtonPanel.CustomButtons.Add(addButton);

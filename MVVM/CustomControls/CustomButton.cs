@@ -13,8 +13,6 @@ namespace MVVM.CustomControls
         #region Fields
         private string _toolTip;
         private Geometry _icon;
-        private bool _isEnabled;
-        private double _opacity;
         private ICommand _command;
         #endregion
 
@@ -41,30 +39,6 @@ namespace MVVM.CustomControls
             set
             {
                 SetProperty(ref _icon, value);
-            }
-        }
-
-        public bool IsEnabled
-        {
-            get
-            {
-                return _isEnabled;
-            }
-            set
-            {
-                SetProperty(ref _isEnabled, value);
-            }
-        }
-
-        public double Opacity
-        {
-            get
-            {
-                return _opacity;
-            }
-            set
-            {
-                SetProperty(ref _opacity, value);
             }
         }
 

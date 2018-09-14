@@ -22,13 +22,10 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate >
                 <DataTemplate>
-                    <Button    
-                            Style="{StaticResource CustomButtonStyle}"
+                    <Button Style="{StaticResource CustomButtonStyle}"
                             ToolTip="{Binding ToolTip}"
                             Command="{Binding Command}"                                      
-                            Tag="{Binding Icon}"  
-                            IsEnabled="{Binding IsEnabled}"
-                            Opacity="{Binding Opacity}"/>
+                            Tag="{Binding Icon}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

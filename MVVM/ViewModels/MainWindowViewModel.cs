@@ -22,10 +22,8 @@ namespace MVVM.ViewModels
         {
             StyleResourceDictionary.InitStyleResourcesDictionary();
             InitButtons();        
-            FillDataGridWithCustomersFromDatabase();      
+            FillDataGridWithCustomersFromDatabase();
         }
-
-
         #endregion
 
         #region Fields
@@ -35,6 +33,7 @@ namespace MVVM.ViewModels
 
         #region Properties
         public CustomButtonPanel CustomButtonPanel { get; set; }
+        public CustomButtonPanel CustomButtonPanelWithChangingOpacity { get; set; }
         public ObservableCollection<Customer> Customers
         {
             get
@@ -60,6 +59,9 @@ namespace MVVM.ViewModels
         #endregion
 
         #region Methods
+
+
+
 
         private void FillDataGridWithCustomersFromDatabase()
         {
@@ -121,30 +123,25 @@ namespace MVVM.ViewModels
             {
                 ToolTip = Lang.AddCustomer,
                 Icon = StyleResourceDictionary._styles["Add"] as System.Windows.Media.Geometry,
-                IsEnabled = true,
-                Opacity = 100,
                 Command = new RelayCommand<object>(x => OpenAddCustomerWindow())
             };
+            CustomButtonPanelWithChangingOpacity = new CustomButtonPanel();
             var editButton = new CustomButton()
             {
                 ToolTip = Lang.EditCustomer,
                 Icon = StyleResourceDictionary._styles["Edit"] as System.Windows.Media.Geometry,
-                IsEnabled = true,
-                Opacity = 100,
                 Command = new RelayCommand<object>(x => OpenEditCustomerWindow())
             };
             var deleteButton = new CustomButton()
             {
                 ToolTip = Lang.DeleteCustomer,
                 Icon = StyleResourceDictionary._styles["Delete"] as System.Windows.Media.Geometry,
-                IsEnabled = true,
-                Opacity = 100,
                 Command = new RelayCommand<object>(x => DeleteCustomer())
             };
 
             CustomButtonPanel.CustomButtons.Add(addButton);
-            CustomButtonPanel.CustomButtons.Add(editButton);
-            CustomButtonPanel.CustomButtons.Add(deleteButton);
+            CustomButtonPanelWithChangingOpacity.CustomButtons.Add(editButton);
+            CustomButtonPanelWithChangingOpacity.CustomButtons.Add(deleteButton);
         }
 
         private void DeleteCustomer()

@@ -7,10 +7,13 @@
         mc:Ignorable="d"
         xmlns:CustomControls="clr-namespace:MVVM.CustomControls"
         xmlns:ViewModel="clr-namespace:MVVM.ViewModels"
+        xmlns:Converters="clr-namespace:MVVM.Converters"
         xmlns:Lang="clr-namespace:LangDictionary.Properties;assembly=LangDictionary"
         Title="MainWindowView" Height="450" Width="800">
     <Window.Resources>
         <ResourceDictionary >
+            <Converters:OpacityConverter x:Key="OpacityConverter" />
+            <Converters:EnableConverter x:Key="EnableConverter" />
             <ResourceDictionary.MergedDictionaries >
                 <ResourceDictionary Source="pack://application:,,,/MVVM;component/Styles/Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -20,8 +23,15 @@
         <ViewModel:MainWindowViewModel/>
     </Window.DataContext>
     <DockPanel LastChildFill="True">
-        <CustomControls:CustomButtonControl DataContext="{Binding CustomButtonPanel}" DockPanel.Dock="Top"/>
-        <DataGrid DockPanel.Dock="Bottom" ItemsSource="{Binding Customers}"
+        <StackPanel  DockPanel.Dock="Top" Orientation="Horizontal">
+            <CustomControls:CustomButtonControl DataContext="{Binding CustomButtonPanel}"/>
+            <CustomControls:CustomButtonControl
+                Opacity="{Binding ElementName=CustomerDataGrid, Path=SelectedItem, Converter={StaticResource OpacityConverter}}"
+                IsEnabled="{Binding ElementName=CustomerDataGrid, Path=SelectedItem, Converter={StaticResource EnableConverter}}"
+                DataContext="{Binding CustomButtonPanelWithChangingOpacity}"/>
+        </StackPanel>
+        <DataGrid x:Name="CustomerDataGrid"
+                  DockPanel.Dock="Bottom" ItemsSource="{Binding Customers}"
                   SelectedItem="{Binding SelectedCustomer}"  
                   ColumnHeaderStyle="{StaticResource ResourceKey=DataGridHeaderStyle}"
                   Style="{StaticResource ResourceKey=DataGridStyle}"
