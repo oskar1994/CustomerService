@@ -89,6 +89,7 @@
     <Compile Include="WindowManager\ModalWindowView.xaml.cs">
       <DependentUpon>ModalWindowView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowManager\WindowExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DatabaseEngine\DatabaseEngine.csproj">

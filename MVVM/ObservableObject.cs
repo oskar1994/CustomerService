@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVVM.WindowManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MVVM
 {
-    public class ObservableObject : INotifyPropertyChanged
+    public class ObservableObject : WindowExtension, INotifyPropertyChanged
     {
             #region Events
             public event PropertyChangedEventHandler PropertyChanged;

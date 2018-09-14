@@ -20,12 +20,6 @@ namespace DatabaseEngine.Controllers
             this._dataContext = dataContext;
         }
 
-        public void AddCustomer(List<Customer> customers)
-        {
-            _dataContext.Customers.AddRange(customers);
-            _dataContext.SaveChanges();
-        }
-
         public void AddCustomer(Customer customer)
         {
             _dataContext.Customers.Add(customer);
@@ -35,12 +29,6 @@ namespace DatabaseEngine.Controllers
         public void RemoveCustomer(Customer customer)
         {
             _dataContext.Customers.Remove(customer);
-            _dataContext.SaveChanges();
-        }
-
-        public void RemoveCustomer(List<Customer> customers)
-        {
-            _dataContext.Customers.RemoveRange(customers);
             _dataContext.SaveChanges();
         }
 

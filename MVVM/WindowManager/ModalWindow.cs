@@ -27,6 +27,11 @@ namespace MVVM.WindowManager
             _modalWindowView.Owner = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             _modalWindowView.ShowDialog();
         }
+
+        public void OnWindowClosed(object source, EventArgs e)
+        {
+            _modalWindowView.Close();
+        }
         #endregion
 
     }

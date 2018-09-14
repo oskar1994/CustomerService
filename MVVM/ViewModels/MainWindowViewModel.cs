@@ -1,4 +1,5 @@
 ﻿using DatabaseEngine.Contexts;
+using DataTypes.EventArguments;
 using Domain;
 using Helpers;
 using MVVM.CustomControls;
@@ -20,40 +21,97 @@ namespace MVVM.ViewModels
         public MainWindowViewModel()
         {
             StyleResourceDictionary.InitStyleResourcesDictionary();
-            InitButtons();
-            Customers = new ObservableCollection<Customer>();
-            Customers.Add(new Customer { Address = "akaka" });
-            Customers.Add(new Customer { Address = "akaka" });
-            Customers.Add(new Customer { Address = "akaka" });
-            Customers.Add(new Customer { Address = "akaka" });
-            Customers.Add(new Customer { Address = "akaka" });
-
-       
+            InitButtons();        
+            FillDataGridWithCustomersFromDatabase();      
         }
+
+
         #endregion
 
         #region Fields
-
+        private Customer _selectedCustomer;
+        private ObservableCollection<Customer> _customers;
         #endregion
 
         #region Properties
         public CustomButtonPanel CustomButtonPanel { get; set; }
-        public ObservableCollection<Customer> Customers { get; set; }
+        public ObservableCollection<Customer> Customers
+        {
+            get
+            {
+                return _customers;
+            }
+             set
+            {
+                SetProperty(ref _customers, value);
+            }
+        }
+        public Customer SelectedCustomer
+        {
+            get
+            {
+                return _selectedCustomer;
+            }
+            set
+            {
+                SetProperty(ref _selectedCustomer, value);
+            }
+        }
         #endregion
 
-        #region 
+        #region Methods
+
+        private void FillDataGridWithCustomersFromDatabase()
+        {
+            Customers = new ObservableCollection<Customer>();
+            try
+            {
+                using(DataContext dataContext = new DataContext())
+                {
+                    Customers = new ObservableCollection<Customer>(dataContext.CustomerController.GetCustomers().ToList());
+                }               
+            }
+            catch(Exception exception)
+            {
+                Logger.LogException(exception);
+            }
+        }
+
         private void OpenEditCustomerWindow()
         {
             ModalWindow modalWindow = new ModalWindow();
-            AddOrEditCustomerViewModel editCustomerViewModel = new EditCustomerViewModel();
+            AddOrEditCustomerViewModel editCustomerViewModel = new EditCustomerViewModel(SelectedCustomer);
+            editCustomerViewModel.ClosedWindow += modalWindow.OnWindowClosed;
+            editCustomerViewModel.CustomerSend += this.OnCustomerSend;
             modalWindow.ShowWindow(editCustomerViewModel);
         }
 
         private void OpenAddCustomerWindow()
         {
-            ModalWindow modalWindow = new ModalWindow();
+            ModalWindow modalWindow = new ModalWindow();        
             AddOrEditCustomerViewModel addCustomerViewModel = new AddCustomerViewModel();
+            addCustomerViewModel.ClosedWindow += modalWindow.OnWindowClosed;
+            addCustomerViewModel.CustomerSend += this.OnCustomerSend;
             modalWindow.ShowWindow(addCustomerViewModel);
+        }
+
+        private void OnCustomerSend(object sender, CustomerEventArgs e)
+        {        
+            if(sender is AddCustomerViewModel)
+            {
+                Customers.Add(e.Customer);
+            }
+            else if (sender is EditCustomerViewModel)
+            {
+                foreach (var customer in Customers.Where(x => x.Id.Equals(e.Customer.Id)))
+                {
+                    customer.Name = e.Customer.Name;
+                    customer.LastName = e.Customer.LastName;
+                    customer.Address = e.Customer.Address;
+                    customer.TelephoneNumber = e.Customer.TelephoneNumber;
+                }
+                Customers = new ObservableCollection<Customer>(Customers);
+            }
         }
 
         private void InitButtons()
@@ -81,7 +139,7 @@ namespace MVVM.ViewModels
                 Icon = StyleResourceDictionary._styles["Delete"] as System.Windows.Media.Geometry,
                 IsEnabled = true,
                 Opacity = 100,
-                Command = new RelayCommand<object>(x => System.Windows.MessageBox.Show("Delete"))
+                Command = new RelayCommand<object>(x => DeleteCustomer())
             };
 
             CustomButtonPanel.CustomButtons.Add(addButton);
@@ -89,7 +147,30 @@ namespace MVVM.ViewModels
             CustomButtonPanel.CustomButtons.Add(deleteButton);
         }
 
-      
+        private void DeleteCustomer()
+        {
+            try
+            {
+                using (DataContext dataContext = new DataContext())
+                {
+                    var customer = dataContext.CustomerController.GetCustomerById(SelectedCustomer.Id);
+                    dataContext.CustomerController.RemoveCustomer(customer);
+                    RefreshUI();              
+                }
+            }
+            catch(Exception exc)
+            {
+                Logger.LogException(exc);
+            }
+        }
+
+        private void RefreshUI()
+        {
+            var customer = Customers.FirstOrDefault(x => x.Id == SelectedCustomer.Id);
+            Customers.Remove(customer);
+        }
+
+
         #endregion
     }
 }

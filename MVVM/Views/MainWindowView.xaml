@@ -22,8 +22,9 @@
     <DockPanel LastChildFill="True">
         <CustomControls:CustomButtonControl DataContext="{Binding CustomButtonPanel}" DockPanel.Dock="Top"/>
         <DataGrid DockPanel.Dock="Bottom" ItemsSource="{Binding Customers}"
-                   ColumnHeaderStyle="{StaticResource ResourceKey=DataGridHeaderStyle}"
-                   Style="{StaticResource ResourceKey=DataGridStyle}"
+                  SelectedItem="{Binding SelectedCustomer}"  
+                  ColumnHeaderStyle="{StaticResource ResourceKey=DataGridHeaderStyle}"
+                  Style="{StaticResource ResourceKey=DataGridStyle}"
                   RowStyle="{StaticResource ResourceKey=DataGridRowStyle}"
                   CellStyle="{StaticResource ResourceKey=DataGridCellStyle}"
                    >
