@@ -3,6 +3,7 @@ using Domain;
 using Helpers;
 using MVVM.CustomControls;
 using MVVM.Styles;
+using MVVM.WindowManager;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,6 +28,9 @@ namespace MVVM.ViewModels
             Customers.Add(new Customer { Address = "akaka" });
             Customers.Add(new Customer { Address = "akaka" });
 
+            AddOrEditCustomerViewModel vm = new AddOrEditCustomerViewModel();
+            ModalWindow w = new ModalWindow();
+            w.ShowWindow(vm);
         }
         #endregion
 

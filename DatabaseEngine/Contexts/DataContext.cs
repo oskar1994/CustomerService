@@ -45,11 +45,11 @@ namespace DatabaseEngine.Contexts
                 {
                     command.CommandType = System.Data.CommandType.Text;
                     command.CommandText = "CREATE TABLE IF NOT EXISTS Customer (" +
-                                       "Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                       "Name TEXT, " +
-                                       "LastName TEXT, " +
-                                       "TelephoneNumber INTEGER, " +
-                                       "Address TEXT)";
+                                          "Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                          "Name TEXT, " +
+                                          "LastName TEXT, " +
+                                          "TelephoneNumber INTEGER NULL, " +
+                                          "Address TEXT)";
                     command.ExecuteNonQuery();
                 }
                 SQLiteConnection.Close();
