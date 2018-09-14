@@ -1,0 +1,51 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MVVM.Styles">
+    <Style TargetType="{x:Type Button}" x:Key="CustomButtonStyle" >
+        <Setter Property="Height" Value="72"/>
+        <Setter Property="Width" Value="72"/>
+        <Setter Property="MinWidth" Value="72"/>
+        <!--<Setter Property="UseLayoutRounding" Value="True"/>-->
+        <!--<Setter Property="Margin" Value="2,2,2,0"/>-->
+        <Setter Property="Background" Value="Transparent"/>
+        <!--<Setter Property="BorderBrush"   Value="#FFA1A2A4"/>-->
+
+        <!--<Setter Property="FontSize" Value="11" />
+        <Setter Property="FontWeight" Value="Medium" />-->
+
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Margin="5 5 5 5" CornerRadius="0" BorderThickness="0" BorderBrush="#808080" Background="{TemplateBinding Background}" x:Name="BorderButton">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
+                            <Path x:Name="PathIcon" Stretch="Uniform"
+                                      Fill="#808080"
+                                      Data="{TemplateBinding Tag}"
+                                      Width="24"
+                                      Height="24"
+                                      HorizontalAlignment="Center"
+                                      Margin="1"
+                                          />
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#898787" />
+                            <Setter Property="Fill" Value="White" TargetName="PathIcon" />
+                            <Setter Property="Background" Value="#898787" TargetName="BorderButton" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#898787" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Geometry x:Key="Add">M12.126984,0L19.872009,0 19.872009,12.128 32,12.128 32,19.872999 19.872009,19.872999 19.872009,31.999 12.126984,31.999 12.126984,19.872999 0,19.872999 0,12.128 12.126984,12.128z</Geometry>
+    <Geometry x:Key="Delete">M13.004038,11.999008L15.004038,11.999008 15.004038,27.999008 13.004038,27.999008z M9.0040382,11.999008L11.004038,11.999008 11.004038,27.999008 9.0040382,27.999008z M5.0040382,11.999008L7.0040382,11.999008 7.0040382,27.999008 5.0040382,27.999008z M2.0040382,9.9990084L2.0040382,29.999008 18.005991,29.999008 18.004038,9.9990084z M0.0040382088,7.9990083L20.004038,7.9990083 20.004038,29.999008C20.004038,31.102036,19.107066,31.999008,18.004038,31.999008L2.0040382,31.999008C0.90101089,31.999008,0.0040382347,31.102036,0.0040382088,29.999008z M9.382152,1.9928446C9.4311546,2.0108452,9.2901482,2.1378503,9.2241453,2.3918595L9.1588997,2.6454129 12.349724,3.4957047 12.411291,3.2568917C12.479293,2.9928818,12.41229,2.8088751,12.379289,2.7708735z M9.3526691,0.0019369125C9.5361752,-0.0065422058,9.7194179,0.01277113,9.8971762,0.060772896L12.969316,0.87780333C14.082366,1.1758142,14.686393,2.4398613,14.348379,3.7559104L14.282698,4.0108039 21.008067,5.8029819 20.492064,7.7349798 0,2.273984 0.51500203,0.34198523 7.2264289,2.1304479 7.2880572,1.8918409C7.4690656,1.189815 7.8960847,0.59879303 8.4571108,0.27178049 8.7402481,0.10739946 9.0468248,0.016067982 9.3526691,0.0019369125z</Geometry>
+    <Geometry x:Key="Edit">M1.867051,22.668933L9.3319602,30.132003 0,31.998993z M18.662943,5.8707967L26.128829,13.335851 11.199011,28.266969 3.7330038,20.800907z M25.196997,0C25.605364,-6.895516E-08,26.013352,0.15525171,26.324872,0.46575543L31.532841,5.6748109C32.155762,6.297802,32.155762,7.3078194,31.532841,7.9318176L27.994782,11.470847 20.53085,4.0047846 24.066832,0.46575543C24.379879,0.15525171,24.788628,-6.895516E-08,25.196997,0z</Geometry>
+</ResourceDictionary>
