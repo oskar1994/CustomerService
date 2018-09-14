@@ -61,11 +61,65 @@ namespace LangDictionary.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CustomerName.
+        ///   Looks up a localized string similar to Add the customer.
+        /// </summary>
+        public static string AddCustomer {
+            get {
+                return ResourceManager.GetString("AddCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        public static string CustomerAddress {
+            get {
+                return ResourceManager.GetString("CustomerAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name.
+        /// </summary>
+        public static string CustomerLastName {
+            get {
+                return ResourceManager.GetString("CustomerLastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string CustomerName {
             get {
                 return ResourceManager.GetString("CustomerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telephone number.
+        /// </summary>
+        public static string CustomerTelephoneNumber {
+            get {
+                return ResourceManager.GetString("CustomerTelephoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete the customer.
+        /// </summary>
+        public static string DeleteCustomer {
+            get {
+                return ResourceManager.GetString("DeleteCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit the customer.
+        /// </summary>
+        public static string EditCustomer {
+            get {
+                return ResourceManager.GetString("EditCustomer", resourceCulture);
             }
         }
     }

@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Lang = LangDictionary.Properties.Resource;
 
 namespace MVVM.ViewModels
 {
@@ -18,7 +19,9 @@ namespace MVVM.ViewModels
         public MainWindowViewModel()
         {
             StyleResourceDictionary.InitStyleResourcesDictionary();
-            InitButtons();          
+            InitButtons();
+            Customers = new ObservableCollection<Customer>();
+            Customers.Add(new Customer { Address = "akaka" });
         }
         #endregion
 
@@ -27,7 +30,8 @@ namespace MVVM.ViewModels
         #endregion
 
         #region Properties
-        public CustomButtonPanel CustomButtonPanel { get; set; } 
+        public CustomButtonPanel CustomButtonPanel { get; set; }
+        public ObservableCollection<Customer> Customers { get; set; }
         #endregion
 
         #region 
@@ -36,7 +40,7 @@ namespace MVVM.ViewModels
             CustomButtonPanel = new CustomButtonPanel();
             var addButton = new CustomButton()
             {
-                ToolTip = "Add",
+                ToolTip = Lang.AddCustomer,
                 Icon = StyleResourceDictionary._styles["Add"] as System.Windows.Media.Geometry,
                 IsEnabled = true,
                 Opacity = 100,
@@ -44,7 +48,7 @@ namespace MVVM.ViewModels
             };
             var editButton = new CustomButton()
             {
-                ToolTip = "Edit",
+                ToolTip = Lang.EditCustomer,
                 Icon = StyleResourceDictionary._styles["Edit"] as System.Windows.Media.Geometry,
                 IsEnabled = true,
                 Opacity = 100,
@@ -52,7 +56,7 @@ namespace MVVM.ViewModels
             };
             var deleteButton = new CustomButton()
             {
-                ToolTip = "Delete",
+                ToolTip = Lang.DeleteCustomer,
                 Icon = StyleResourceDictionary._styles["Delete"] as System.Windows.Media.Geometry,
                 IsEnabled = true,
                 Opacity = 100,
