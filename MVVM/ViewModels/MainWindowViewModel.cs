@@ -28,9 +28,7 @@ namespace MVVM.ViewModels
             Customers.Add(new Customer { Address = "akaka" });
             Customers.Add(new Customer { Address = "akaka" });
 
-            AddOrEditCustomerViewModel vm = new AddOrEditCustomerViewModel();
-            ModalWindow w = new ModalWindow();
-            w.ShowWindow(vm);
+       
         }
         #endregion
 
@@ -44,6 +42,20 @@ namespace MVVM.ViewModels
         #endregion
 
         #region 
+        private void OpenEditCustomerWindow()
+        {
+            ModalWindow modalWindow = new ModalWindow();
+            AddOrEditCustomerViewModel editCustomerViewModel = new EditCustomerViewModel();
+            modalWindow.ShowWindow(editCustomerViewModel);
+        }
+
+        private void OpenAddCustomerWindow()
+        {
+            ModalWindow modalWindow = new ModalWindow();
+            AddOrEditCustomerViewModel addCustomerViewModel = new AddCustomerViewModel();
+            modalWindow.ShowWindow(addCustomerViewModel);
+        }
+
         private void InitButtons()
         {
             CustomButtonPanel = new CustomButtonPanel();
@@ -53,7 +65,7 @@ namespace MVVM.ViewModels
                 Icon = StyleResourceDictionary._styles["Add"] as System.Windows.Media.Geometry,
                 IsEnabled = true,
                 Opacity = 100,
-                Command = new RelayCommand<object>(x => System.Windows.MessageBox.Show("Add"))
+                Command = new RelayCommand<object>(x => OpenAddCustomerWindow())
             };
             var editButton = new CustomButton()
             {
@@ -61,7 +73,7 @@ namespace MVVM.ViewModels
                 Icon = StyleResourceDictionary._styles["Edit"] as System.Windows.Media.Geometry,
                 IsEnabled = true,
                 Opacity = 100,
-                Command = new RelayCommand<object>(x => System.Windows.MessageBox.Show("Edit"))
+                Command = new RelayCommand<object>(x => OpenEditCustomerWindow())
             };
             var deleteButton = new CustomButton()
             {
@@ -76,6 +88,8 @@ namespace MVVM.ViewModels
             CustomButtonPanel.CustomButtons.Add(editButton);
             CustomButtonPanel.CustomButtons.Add(deleteButton);
         }
+
+      
         #endregion
     }
 }

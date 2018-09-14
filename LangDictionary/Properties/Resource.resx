@@ -120,6 +120,9 @@
   <data name="AddCustomer" xml:space="preserve">
     <value>Add the customer</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="CustomerAddress" xml:space="preserve">
     <value>Address</value>
   </data>
@@ -137,5 +140,8 @@
   </data>
   <data name="EditCustomer" xml:space="preserve">
     <value>Edit the customer</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
   </data>
 </root>
