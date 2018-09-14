@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\EnableConverter.cs" />
+    <Compile Include="Converters\OnlyDigitsValidationRule.cs" />
     <Compile Include="Converters\OpacityConverter.cs" />
     <Compile Include="CustomControls\CustomButtonPanel.cs" />
     <Compile Include="CustomControls\CustomButtonControl.xaml.cs">

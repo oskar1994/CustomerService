@@ -5,11 +5,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MVVM.Views"
+             xmlns:Converters="clr-namespace:MVVM.Converters"
              xmlns:Lang="clr-namespace:LangDictionary.Properties;assembly=LangDictionary"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <ResourceDictionary >
+            <Converters:OnlyDigitsValidationRule x:Key="OnlyDigitsValidationRule" />
             <ResourceDictionary.MergedDictionaries >
                 <ResourceDictionary Source="pack://application:,,,/MVVM;component/Styles/Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -34,7 +36,15 @@
         <TextBox Grid.Column="1" Grid.Row="0" Style="{StaticResource ResourceKey=TextBoxStyle}" Text="{Binding Name}" />
         <TextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource ResourceKey=TextBoxStyle}" Text="{Binding LastName}"/>
         <TextBox Grid.Column="1" Grid.Row="2" Style="{StaticResource ResourceKey=TextBoxStyle}" Text="{Binding Address}"/>
-        <TextBox Grid.Column="1" Grid.Row="3" Style="{StaticResource ResourceKey=TextBoxStyle}" Text="{Binding TelephoneNumber}"/>
+        <TextBox Grid.Column="1" Grid.Row="3" Style="{StaticResource ResourceKey=TextBoxStyle}" >
+            <TextBox.Text>
+                <Binding Path="TelephoneNumber" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <Converters:OnlyDigitsValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <CustomControls:CustomButtonControl DataContext="{Binding CustomButtonPanel}" Grid.ColumnSpan="2" Grid.Row="4" HorizontalAlignment="Center" />
     </Grid>
 </UserControl>
