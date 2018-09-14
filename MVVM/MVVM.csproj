@@ -116,7 +116,11 @@
       <Name>LangDictionary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Background.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
   <ItemGroup>
     <Page Include="CustomControls\CustomButtonControl.xaml">
       <SubType>Designer</SubType>

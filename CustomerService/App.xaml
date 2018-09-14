@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:CustomerService"
              StartupUri="pack://application:,,,/MVVM;component/Views/MainWindowView.xaml"
              ShutdownMode="OnMainWindowClose">
+    <!--icon from https://www.iconfinder.com/icons/80830/business_man_customer_male_icon-->
     <Application.Resources>
          
     </Application.Resources>

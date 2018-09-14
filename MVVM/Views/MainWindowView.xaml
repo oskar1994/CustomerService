@@ -9,7 +9,8 @@
         xmlns:ViewModel="clr-namespace:MVVM.ViewModels"
         xmlns:Converters="clr-namespace:MVVM.Converters"
         xmlns:Lang="clr-namespace:LangDictionary.Properties;assembly=LangDictionary"
-        Title="MainWindowView" Height="450" Width="800">
+        Title="Customer Service"
+        Height="450" Width="800">
     <Window.Resources>
         <ResourceDictionary >
             <Converters:OpacityConverter x:Key="OpacityConverter" />
@@ -23,7 +24,10 @@
         <ViewModel:MainWindowViewModel/>
     </Window.DataContext>
     <DockPanel LastChildFill="True">
-        <StackPanel  DockPanel.Dock="Top" Orientation="Horizontal">
+        <DockPanel.Background>
+             <ImageBrush Opacity="0.4"  ImageSource="pack://application:,,,/MVVM;component/Images/Background.png" Stretch="Fill"/>
+        </DockPanel.Background>
+            <StackPanel  DockPanel.Dock="Top" Orientation="Horizontal">
             <CustomControls:CustomButtonControl DataContext="{Binding CustomButtonPanel}"/>
             <CustomControls:CustomButtonControl
                 Opacity="{Binding ElementName=CustomerDataGrid, Path=SelectedItem, Converter={StaticResource OpacityConverter}}"

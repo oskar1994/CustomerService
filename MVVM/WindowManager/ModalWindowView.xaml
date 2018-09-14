@@ -21,5 +21,8 @@
     </Window.Resources>
     <Grid>
         <ContentControl Content="{Binding}"/>
+        <Grid.Background>
+            <ImageBrush Opacity="0.4"  ImageSource="pack://application:,,,/MVVM;component/Images/Background.png" Stretch="Fill"/>
+        </Grid.Background>
     </Grid>
 </Window>

@@ -21,7 +21,7 @@ namespace MVVM.Views
     {
         public MainWindowView()
         {
-            InitializeComponent();
+            InitializeComponent();          
         }
     }
 }

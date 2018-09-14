@@ -85,7 +85,7 @@ namespace MVVM.ViewModels
             AddOrEditCustomerViewModel editCustomerViewModel = new EditCustomerViewModel(SelectedCustomer);
             editCustomerViewModel.ClosedWindow += modalWindow.OnWindowClosed;
             editCustomerViewModel.CustomerSend += this.OnCustomerSend;
-            modalWindow.ShowWindow(editCustomerViewModel);
+            modalWindow.ShowWindow(editCustomerViewModel, Lang.EditCustomer);
         }
 
         private void OpenAddCustomerWindow()
@@ -94,7 +94,7 @@ namespace MVVM.ViewModels
             AddOrEditCustomerViewModel addCustomerViewModel = new AddCustomerViewModel();
             addCustomerViewModel.ClosedWindow += modalWindow.OnWindowClosed;
             addCustomerViewModel.CustomerSend += this.OnCustomerSend;
-            modalWindow.ShowWindow(addCustomerViewModel);
+            modalWindow.ShowWindow(addCustomerViewModel, Lang.AddCustomer);
         }
 
         private void OnCustomerSend(object sender, CustomerEventArgs e)

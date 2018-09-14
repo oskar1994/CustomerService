@@ -21,9 +21,10 @@ namespace MVVM.WindowManager
         #endregion
 
         #region Methods
-        public void ShowWindow(object dataContext)
+        public void ShowWindow(object dataContext, string title)
         {
-            _modalWindowView.DataContext = dataContext;       
+            _modalWindowView.DataContext = dataContext;
+            _modalWindowView.Title = title;
             _modalWindowView.Owner = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             _modalWindowView.ShowDialog();
         }

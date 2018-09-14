@@ -70,6 +70,15 @@ namespace LangDictionary.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customer Service.
+        /// </summary>
+        public static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {

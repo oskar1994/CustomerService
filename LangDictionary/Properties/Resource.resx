@@ -120,6 +120,9 @@
   <data name="AddCustomer" xml:space="preserve">
     <value>Add the customer</value>
   </data>
+  <data name="AppName" xml:space="preserve">
+    <value>Customer Service</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
