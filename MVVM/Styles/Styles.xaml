@@ -38,6 +38,16 @@
         </Setter>
     </Style>
 
+    <Style x:Key="DataGridHeaderStyle" TargetType="{x:Type DataGridColumnHeader}" >
+        <Setter Property="Height" Value="25" />
+        <Setter Property="Background" Value ="#808080"/>
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Padding" Value="3" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="0,0,1,1" />
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
 
     <Style x:Key="DataGridStyle" TargetType="{x:Type DataGrid}"   >
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -76,6 +86,53 @@
         <Setter Property="FontSize" Value="14" />
         <Setter Property="BorderBrush" Value="Black"></Setter>
         <Setter Property="BorderThickness" Value="1"></Setter>
+    </Style>
+
+    <Style x:Key="DataGridRowStyle"   TargetType="{x:Type DataGridRow}">
+        <Setter Property="Margin" Value="0,0,0,0"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Style.Triggers>
+            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                <Setter Property="Background" Value="LightGray" />
+            </Trigger>
+            <Trigger Property="ItemsControl.AlternationIndex" Value="2">
+                <Setter Property="Background" Value="LightSlateGray" />
+            </Trigger>
+            <Trigger Property="DataGridCell.IsSelected" Value="True">
+                <Setter Property="Background" Value="DimGray" />
+            </Trigger>
+            <Trigger Property="DataGridRow.IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="Gray" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style x:Key="DataGridCellStyle"   TargetType="{x:Type DataGridCell}">
+        <Setter Property="Height" Value="26" />
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="5"/>
+        <Setter Property="BorderBrush" Value="#FFF0C4A6"  />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" Margin="1,0,1,0"  />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="DataGridCell.IsSelected" Value="True">
+                            <Setter Property="Background" Value="ForestGreen" />
+                            <Setter Property="Foreground" Value="Black" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Geometry x:Key="Add">M12.126984,0L19.872009,0 19.872009,12.128 32,12.128 32,19.872999 19.872009,19.872999 19.872009,31.999 12.126984,31.999 12.126984,19.872999 0,19.872999 0,12.128 12.126984,12.128z</Geometry>

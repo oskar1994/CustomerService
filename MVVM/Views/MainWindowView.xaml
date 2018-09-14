@@ -22,13 +22,16 @@
     <DockPanel LastChildFill="True">
         <CustomControls:CustomButtonControl DataContext="{Binding CustomButtonPanel}" DockPanel.Dock="Top"/>
         <DataGrid DockPanel.Dock="Bottom" ItemsSource="{Binding Customers}"
+                   ColumnHeaderStyle="{StaticResource ResourceKey=DataGridHeaderStyle}"
                    Style="{StaticResource ResourceKey=DataGridStyle}"
+                  RowStyle="{StaticResource ResourceKey=DataGridRowStyle}"
+                  CellStyle="{StaticResource ResourceKey=DataGridCellStyle}"
                    >
             <DataGrid.Columns>
-                <DataGridTextColumn Width="auto" Binding="{Binding Name}" Header="{x:Static Lang:Resource.CustomerName}" />
-                <DataGridTextColumn Width="auto" Binding="{Binding LastName}" Header="{x:Static Lang:Resource.CustomerLastName}" />
-                <DataGridTextColumn Width="auto" Binding="{Binding Address}" Header="{x:Static Lang:Resource.CustomerAddress}" />
-                <DataGridTextColumn Width="auto" Binding="{Binding TelephoneNumber}" Header="{x:Static Lang:Resource.CustomerTelephoneNumber}" />
+                <DataGridTextColumn Width="*" Binding="{Binding Name}" Header="{x:Static Lang:Resource.CustomerName}" />
+                <DataGridTextColumn Width="*" Binding="{Binding LastName}" Header="{x:Static Lang:Resource.CustomerLastName}" />
+                <DataGridTextColumn Width="*" Binding="{Binding Address}" Header="{x:Static Lang:Resource.CustomerAddress}" />
+                <DataGridTextColumn Width="*" Binding="{Binding TelephoneNumber}" Header="{x:Static Lang:Resource.CustomerTelephoneNumber}" />
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>

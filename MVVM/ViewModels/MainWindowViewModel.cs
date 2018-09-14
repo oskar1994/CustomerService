@@ -22,6 +22,11 @@ namespace MVVM.ViewModels
             InitButtons();
             Customers = new ObservableCollection<Customer>();
             Customers.Add(new Customer { Address = "akaka" });
+            Customers.Add(new Customer { Address = "akaka" });
+            Customers.Add(new Customer { Address = "akaka" });
+            Customers.Add(new Customer { Address = "akaka" });
+            Customers.Add(new Customer { Address = "akaka" });
+
         }
         #endregion
 
